@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  wa-bot-wrapper:
+    container_name: wa-bot-wrapper
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/go/src/app
+      - .env:/go/src/app/.env
+    command: go run main.go
