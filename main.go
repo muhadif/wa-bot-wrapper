@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	_ "github.com/mattn/go-sqlite3"
+	"github.com/mdp/qrterminal/v3"
 	"github.com/muhadif/wa-bot-wrapper/config"
 	"github.com/muhadif/wa-bot-wrapper/handler"
 	"github.com/muhadif/wa-bot-wrapper/internal/biz"
@@ -46,10 +47,7 @@ func main() {
 		}
 		for evt := range qrChan {
 			if evt.Event == "code" {
-				// Render the QR code here
-				// e.g. qrterminal.GenerateHalfBlock(evt.Code, qrterminal.L, os.Stdout)
-				// or just manually `echo 2@... | qrencode -t ansiutf8` in a terminal
-				fmt.Println("QR code:", evt.Code)
+				qrterminal.GenerateHalfBlock(evt.Code, qrterminal.L, os.Stdout)
 			} else {
 				fmt.Println("Login event:", evt.Event)
 			}

@@ -12,3 +12,4 @@ services:
       - .:/go/src/app
       - .env:/go/src/app/.env
     command: go run main.go
+    network_mode: host
